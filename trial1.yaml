@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: spec-rs
+spec:
+  minreadyseconds: 10
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spc
+  template:
+    metadata:
+      labels:
+        app: spc
+        env: dev
+        version: v3.4.0
+       resources:
+       
+        cpu: 500m
+        memory: 256Mi
