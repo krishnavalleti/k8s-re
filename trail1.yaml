@@ -1,24 +1,9 @@
----
 apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: spc-rs
+kind: deployment
+metadata: 
+  name: jenkins-re
 spec:
-  minReadySeconds: 10
-  replicas: 3
+  minireadyseconds: 5
+  replicas: 10
   selector:
-    matchLabels:
-      app: spc
-  template:
-    metadata:
-      labels:
-        app: spc
-        env: dev
-        version: v3.4.0
-    spec:
-      restartPolicy: always
-      containers:
-        - name: spc
-          image: shaikkhajaibrahim/spcjan2024:1.0
-          ports:
-            - containerPort: 8080
+  
