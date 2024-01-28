@@ -2,9 +2,9 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: spec-rs
+  name: spc-rs
 spec:
-  minreadyseconds: 10
+  minReadySeconds: 10
   replicas: 3
   selector:
     matchLabels:
@@ -15,7 +15,10 @@ spec:
         app: spc
         env: dev
         version: v3.4.0
-       resources:
-       
-        cpu: 500m
-        memory: 256Mi
+    spec:
+      restartPolicy: always
+      containers:
+        - name: spc
+          image: shaikkhajaibrahim/spcjan2024:1.0
+          ports:
+            - containerPort: 8080
